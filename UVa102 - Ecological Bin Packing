@@ -1,0 +1,49 @@
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	long box1[3],box2[3],box3[3],count;
+	while(cin>>box1[0]>>box1[1]>>box1[2]>>box2[0]>>box2[1]>>box2[2]>>box3[0]>>box3[1]>>box3[2])
+	{
+		long ans=2147483647;
+		string Ans="";
+		count=box2[0]+box3[0]+box1[1]+box2[1]+box1[2]+box3[2];
+		if(count<ans)
+		{
+			ans=count;
+			Ans="BCG";
+		}
+		count=box2[0]+box3[0]+box1[1]+box3[1]+box1[2]+box2[2];
+		if(count<ans)
+		{
+			ans=count;
+			Ans="BGC";
+		}
+		count=box1[0]+box3[0]+box1[1]+box2[1]+box2[2]+box3[2];
+		if(count<ans)
+		{
+			ans=count;
+			Ans="CBG";
+		}
+		count=box1[0]+box2[0]+box1[1]+box3[1]+box2[2]+box3[2];
+		if(count<ans)
+		{
+			ans=count;
+			Ans="CGB";
+		}
+		count=box1[0]+box3[0]+box2[1]+box3[1]+box1[2]+box2[2];
+		if(count<ans)
+		{
+			ans=count;
+			Ans="GBC";
+		}
+		count=box1[0]+box2[0]+box2[1]+box3[1]+box1[2]+box3[2];
+		if(count<ans)
+		{
+			ans=count;
+			Ans="GCB";
+		}
+		cout<<Ans<<' '<<ans<<endl;
+	}
+}

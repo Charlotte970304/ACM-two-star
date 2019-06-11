@@ -1,0 +1,46 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+
+int main()
+{	
+	int a,b,input;
+	while(cin>>a>>b)
+	{
+		vector<int> alice;
+		vector<int> betty;
+
+		if(a==0&&b==0)
+			break;
+		for(int i=0;i<a;i++)
+		{
+			cin>>input;
+			if(i!=0&&input==alice.back())
+				continue;
+			alice.push_back(input);
+		}
+		for(int i=0;i<b;i++)
+		{
+			cin>>input;
+			if(i!=0&&input==betty.back())
+				continue;
+			betty.push_back(input);
+		}
+		
+		for(int i=0;i<alice.size();i++)
+		{
+			for(int j=0;j<betty.size();j++)
+			{
+				if(alice[i]==betty[j])
+				{
+					alice.erase(alice.begin()+i);
+					betty.erase(betty.begin()+j);
+					i--;
+					j--;
+					break;
+				}
+			}
+		}
+		cout<<(alice.size()<betty.size()?alice.size():betty.size())<<endl;		
+	}
+}

@@ -1,0 +1,33 @@
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	int num[100001];
+	for(int i=1;i<=100000;i++)
+	{
+		int temp=i;
+		num[i]=temp;
+		while(temp>0)
+		{
+			num[i]+=(temp%10);
+			temp/=10;
+		}
+	}
+	int tc,N;
+	cin>>tc;
+	while(tc--)
+	{
+		bool find=false;
+		cin>>N;
+		for(int i=1;i<100000;i++)
+			if(num[i]==N)
+			{
+				find=true;
+				cout<<i<<endl;
+				break;
+			}
+		if(!find)
+		cout<<0<<endl;
+	}
+}

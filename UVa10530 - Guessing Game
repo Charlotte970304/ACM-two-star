@@ -1,0 +1,29 @@
+#include<iostream>
+#include<string>
+using namespace std;
+
+int main()
+{
+	int number,big=10,small=1;
+	string one,two;
+	while(cin>>number)
+	{
+		if(number==0)
+		break;
+		cin>>one>>two;
+		if(two=="high"&&number<=big)
+			big=number-1;
+		else if(two=="low"&&number>=small)
+			small=number+1;//s=4 b=3
+		else if(two=="on")
+		{
+			if(small>big||number<small||number>big)
+				cout<<"Stan is dishonest"<<endl;
+			else
+				cout<<"Stan may be honest"<<endl;
+			big=10;
+			small=1;
+		}	
+	}
+	
+} 

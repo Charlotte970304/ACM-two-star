@@ -1,0 +1,65 @@
+#include<iostream>
+#include<cmath>
+#include<string>
+using namespace std;
+
+bool is_prime(long num)
+{
+	if(num==2||num==3)
+		return true;
+	for(int i=2;i<=sqrt(num);i++)
+		if(num%i==0)
+			return false;
+	return true;
+}
+
+string int_to_str(long num)
+{
+	string s="";
+	while(num!=0)
+	{
+		s=(char)(num%10+48)+s;
+		num/=10;
+	}
+	return s;
+}
+
+int main()
+{
+	long prime[100001]={0};//0 is unknown,1 is true,2 is false 
+	for(long i=2;i<100000;i++)
+	{
+		if(prime[i]==0)
+			if(is_prime(i))
+			{
+				prime[i]=1;
+			//	cout<<i<<endl;
+				for(long j=2;j*i>100000;j++)
+				{
+					if(i==2&&j==2)
+						cout<<i*j<<" "<<prime[j*i]<<endl;
+					if(j*i>100000)
+						break;
+					prime[j*i]=2;
+				}
+			}
+	}
+	string number;
+	while(cin>>number)
+	{
+		if(number=="0")
+			break;
+		for(int find=99999;find>=2;find--)
+		{
+			if(prime[find]==1)
+			{
+				int cmp = number.find(int_to_str(find));
+				if(cmp != -1)
+				{
+					cout<<find<<endl;
+					break;
+				}
+			}	
+		}
+	}
+}
